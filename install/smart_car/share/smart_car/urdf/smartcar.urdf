@@ -1,0 +1,365 @@
+<?xml version="1.0" ?>
+<robot name="smart_car">
+
+  <link name="base_link" />
+
+  <link name="chassis_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="5.0"/>
+      <inertia ixx="0.2" ixy="0" ixz="0" iyy="0.2" iyz="0" izz="0.2"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <box size="0.3 0.2 0.03"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.02"/>
+      <material name="grey">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.1 0.1 0.01"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.07"/>
+    </collision>
+  </link>
+  
+  <joint name="base_link_to_chassis_link" type="fixed">
+    <parent link="base_link"/>
+    <child link="chassis_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0.01"/>
+  </joint>
+  
+  <link name="imu_link">
+      <inertial>
+          <origin rpy="0 0 0" xyz="0 0 0"/>
+          <mass value="0.1"/>
+          <inertia ixx="0.002" ixy="0" ixz="0" iyy="0.002" iyz="0" izz="0.002"/>
+      </inertial>
+      <visual>
+          <geometry>
+              <box size="0.05 0.05 0.05"/>
+          </geometry>
+          <origin rpy="0 0 0" xyz="0 0 0"/>
+          <material name="blue">
+              <color rgba="0.0 0.0 1.0 1.0"/>
+          </material>
+      </visual>
+      <collision>
+          <geometry>
+              <box size="0.05 0.05 0.05"/> <!-- Collision geometry -->
+          </geometry>
+          <origin rpy="0 0 0" xyz="0 0 0"/>
+      </collision>
+  </link>
+  
+  <joint name="imu_joint" type="fixed">
+      <parent link="chassis_link"/>
+      <child link="imu_link"/>
+      <origin rpy="0 0 0" xyz="0 0 0.05"/>
+  </joint>
+
+  
+  
+  <link name="back_left_wheel_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <cylinder length="0.025" radius="0.032"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+        <color rgba="0.1 0.1 0.1 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.025" radius="0.032"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+  </link>
+
+  <gazebo reference="back_left_wheel_link">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+  <link name="back_right_wheel_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <cylinder length="0.025" radius="0.032"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+        <color rgba="0.1 0.1 0.1 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.025" radius="0.032"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+  </link>
+
+  <gazebo reference="back_right_wheel_link">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+  <link name="front_left_wheel_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <cylinder length="0.025" radius="0.032"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+        <color rgba="0.1 0.1 0.1 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.025" radius="0.032"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+  </link>
+
+  <gazebo reference="front_left_wheel_link">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+  <link name="front_right_wheel_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <cylinder length="0.025" radius="0.032"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black">
+        <color rgba="0.1 0.1 0.1 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.025" radius="0.032"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+  </link>
+  
+  <gazebo reference="front_right_wheel_link">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+
+  <joint name="back_left_wheel_joint" type="continuous">
+    <parent link="chassis_link"/>
+    <child link="back_left_wheel_link"/>
+    <origin rpy="-1.5708 0 0" xyz="-0.1285 0.115 0.016"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="100" velocity="100"/> 
+  </joint>
+
+  <joint name="back_right_wheel_joint" type="continuous">
+    <parent link="chassis_link"/>
+    <child link="back_right_wheel_link"/>
+    <origin rpy="-1.5708 0 0" xyz="-0.1285 -0.115 0.016"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="100" velocity="100"/> 
+  </joint>
+
+  <link name="front_left_wheel_mount">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <sphere radius="0.01"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.01"/>
+      </geometry>
+    </collision>
+  </link>
+
+  
+
+  <joint name="front_left_wheel_steer_joint" type="revolute">
+    <parent link="chassis_link"/>
+    <child link="front_left_wheel_mount"/>
+    <origin xyz="0.125 0.115 0.016" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.5" upper="0.5" effort="100" velocity="100"/>
+  </joint>
+
+  <joint name="front_left_wheel_joint" type="continuous">
+    <parent link="front_left_wheel_mount"/>
+    <child link="front_left_wheel_link"/>
+    <origin xyz="0 0 0" rpy="-1.5708 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="100" velocity="100"/>
+  </joint> 
+
+  <link name="front_right_wheel_mount">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <sphere radius="0.01"/>
+      </geometry>
+    </visual>
+  </link>
+
+
+  <joint name="front_right_wheel_steer_joint" type="revolute">
+    <parent link="chassis_link"/>
+    <child link="front_right_wheel_mount"/>
+    <origin xyz="0.125 -0.115 0.016" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.5" upper="0.5" effort="1" velocity="1"/>
+  </joint>
+
+  <joint name="front_right_wheel_joint" type="continuous">
+    <parent link="front_right_wheel_mount"/>
+    <child link="front_right_wheel_link"/>
+    <origin xyz="0 0 0" rpy="-1.5708 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="100" velocity="100"/> <!-- Added limits -->
+  </joint>
+
+<!-- LIDAR Sensor Configuration -->
+  <link name="sllidar_base_link">
+      <visual>
+          <geometry>
+              <cylinder length="0.1" radius="0.055"/> <!-- Small circle for LIDAR -->
+          </geometry>
+          <origin rpy="0 0 0" xyz="0 0 0"/>
+          <material name="green">
+              <color rgba="0.0 1.0 0.0 1.0"/>
+          </material>
+      </visual>
+      <collision>
+          <geometry>
+              <cylinder length="0.1" radius="0.055"/> <!-- Small circle for LIDAR -->
+          </geometry>
+          <origin rpy="0 0 0" xyz="0 0 0"/>
+      </collision>
+  </link>
+
+  <joint name="base_link_to_lidar_link" type="fixed">
+      <parent link="base_link"/>
+      <child link="sllidar_base_link"/>
+      <origin rpy="0 0 0" xyz="0.125 0 0.11"/> <!-- Positioning of LIDAR 0.16 standard-->
+  </joint>
+
+
+  <gazebo reference="sllidar_base_link">
+    <sensor type="ray" name="lidar_sensor">
+      <pose>0 0 0 0 0 0</pose> <!-- Corrected pose with 6 values -->
+      <visualize>false</visualize>
+      <update_rate>10</update_rate> <!-- Corrected tag from update_ray to update_rate -->
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <min_angle>-3.14</min_angle>
+            <max_angle>3.14</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.3</min>
+          <max>12</max>
+          <resolution>0.001</resolution>
+        </range>
+      </ray>
+      
+      <plugin name="lidar_one" filename="libgazebo_ros_ray_sensor.so">
+        <!-- Set output to sensor_msgs/LaserScan to get same output type as gazebo_ros_laser -->
+        <ros>
+          <namespace>/</namespace>
+          <remapping>~/out:=scan</remapping>
+        </ros>
+        <output_type>sensor_msgs/LaserScan</output_type>
+        <frame_name>sllidar_base_link</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="sllidar_base_link">
+        <material>Gazebo/Orange</material>
+    </gazebo>
+
+  <gazebo reference="imu_link">
+    <sensor type="imu" name="imu_sensor">
+      <always_on>true</always_on>
+      <update_rate>30</update_rate>  <!-- Publish at 30 Hz -->
+      <plugin name="imu_sensor_plugin" filename="libgazebo_ros_imu_sensor.so">
+        <ros>
+          <!-- Publish IMU data to /imu_data topic -->
+          <namespace>/</namespace>
+          <remapping>~/out:=imu_data</remapping>
+        </ros>
+        <!-- The sensor will use imu_link as the frame -->
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="imu_link">
+        <material>Gazebo/Red</material>
+    </gazebo>
+
+  
+
+  <gazebo>
+    <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+      <robotNamespace>/</robotNamespace>  
+      <joint_name>back_right_wheel_joint</joint_name>
+      <joint_name>back_left_wheel_joint</joint_name>
+      <joint_name>front_right_wheel_joint</joint_name>
+      <joint_name>front_left_wheel_joint</joint_name>
+      <joint_name>front_right_wheel_steer_joint</joint_name>
+      <joint_name>front_left_wheel_steer_joint</joint_name>         
+      <alwaysOn>true</alwaysOn>  
+      <updateRate>50</updateRate>  
+    </plugin>
+  </gazebo>
+
+  <plugin name="car_gazebo_plugin" filename="libcar_gazebo_plugin.so">
+    <ros>
+      <namespace>smart_car</namespace>
+    </ros>
+  </plugin>
+
+
+
+
+
+
+</robot>
